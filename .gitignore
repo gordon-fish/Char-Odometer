@@ -1,0 +1,9 @@
+.build
+Makefile
+Makefile.old
+tmp
+*.bak
+*.old
+*.patch
+*.rej
+*.swp
