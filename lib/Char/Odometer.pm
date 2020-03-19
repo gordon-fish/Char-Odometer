@@ -149,6 +149,7 @@ sub set_at {
 sub find_set_with {
     my ($self, $char, @set_indices) = @_;
     my $sets = $self->{sets};
+    
     @set_indices = 0 .. $#$sets unless @set_indices;
     
     for (@set_indices) {
@@ -172,6 +173,7 @@ sub index_of_digit {
 sub inc {
     my $self = shift;
     my $digits = $self->{digits};
+    die "There no digits to be incremented." unless @$digits;
     $digits->[ -1 ]->inc(@_) if @$digits;
     return $self;
 }
@@ -179,6 +181,7 @@ sub inc {
 sub dec {
     my $self = shift;
     my $digits = $self->{digits};
+    die "There no digits to be decremented." unless @$digits;
     $digits->[ -1 ]->dec(@_) if @$digits;
     return $self;
 }
@@ -223,7 +226,10 @@ sub range_of {
 }
 
 1;
-#---------------------------------------------------------------------------
+
+
+
+
 
 package Char::Odometer::Digit;
 
@@ -282,6 +288,8 @@ sub dec {
     
     return $self;
 }
+
+
 
 sub digit {
     my $self = shift;
